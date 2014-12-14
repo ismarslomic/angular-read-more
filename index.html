@@ -10,9 +10,11 @@
 <body ng-app="app">
 	<div ng-controller="readmoreCntroller">
 		Original Text - {{ text }}<br />
+		
+		<br />
 
 		Textafter applying filter :
-		<hm-read hmtext="{{ text }}" hmlimit="10"></hm-read>
+		<hm-read hmtext="{{ text }}" hmlimit="100" hm-more-text="read more" hm-less-text="read less"></hm-read>
 
 	</div>
 </body>
