@@ -18,15 +18,11 @@ app.directive('hmRead', function () {
             hmLessClass:'@'
     	},
         templateUrl: 'template.html',
+        transclude: true,
         controller : function($scope){
         	  $scope.toggleValue=function(){
-
-                    if($scope.hmfulltext == true)
-                        $scope.hmfulltext=false;
-                    else if($scope.hmfulltext == false)
-                        $scope.hmfulltext=true;
-                    else
-                        $scope.hmfulltext=true;
+                    //Inverts hmfulltext flag to either TRUE/FALSE on each click
+                    $scope.hmfulltext = !$scope.hmfulltext;
               }        
         }
     };
