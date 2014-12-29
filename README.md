@@ -4,7 +4,10 @@
 
 ##How to use - HTML
 ```
-<hm-read hmtext="{{ text }}" hmlimit="100" hm-more-text="read more" hm-less-text="read less"></hm-read>
+<hm-read 
+		hmtext="{{ text }}" hmlimit="100" hm-more-text="read more" 
+		hm-less-text="read less">
+</hm-read>
 ```
 
 * hmtext  - text
