@@ -19,6 +19,10 @@
 * hm-more-class - css class for more link
 * hm-less-class - css class for more link
 
-## Demo
+##Demo
 
 [Plnkr Demo](http://plnkr.co/7ggKNRw7nwCLmPN0y4Az)
+
+##License
+
+Angular-autocomplete is licensed under the MIT license.
