@@ -17,7 +17,6 @@ function readMore($templateCache, limitToFilter) {
 		scope: {
 			hmText: '@',
 			hmLimit: '@',
-			hmFulltext: '@',
 			hmMoreText: '@',
 			hmLessText: '@',
 			hmMoreClass: '@',
@@ -32,17 +31,35 @@ function readMore($templateCache, limitToFilter) {
 	return directive;
 
 	/** @ngInject */
-	function ReadMoreController() {
+	// "bindToController: true" binds scope variables to Controller
+	function ReadMoreController($filter) {
 		var vm = this;
 
-		// "vm.hmfulltext" is avaible by directive option "bindToController: true"
-		vm.toggleValue = function () {
-			if (vm.hmFulltext == true)
-				vm.hmFulltext = false;
-			else if (vm.hmFulltext == false)
-				vm.hmFulltext = true;
-			else
-				vm.hmFulltext = true;
+		vm.initialText = $filter('limitTo')(vm.hmText, vm.hmLimit);
+		showLess();
+
+		vm.toggle = function () {
+			switch (vm.toggleState) {
+				case 'less':
+					showMore();
+					break;
+				default:
+					showLess();
+			}
+		}
+
+		function showMore() {
+			vm.remainingText = $filter('limitTo')(vm.hmText, (vm.hmLimit - vm.hmText.length));
+			vm.toggleState = 'more';
+			vm.toggleDots = '';
+			vm.toggleText = vm.hmLessText;
+		}
+
+		function showLess() {
+			vm.remainingText = '';
+			vm.toggleState = 'less';
+			vm.toggleDots = '...';
+			vm.toggleText = vm.hmMoreText;
 		}
 	}
 };

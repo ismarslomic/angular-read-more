@@ -1,8 +1,9 @@
-<span ng-if="vm.hmText.length > vm.hmLimit">
-	{{ vm.hmText | limitTo:vm.hmLimit }}
-	<span ng-hide="vm.hmFulltext">...<a ng-click="vm.toggleValue()">{{ vm.hmMoreText }}</a></span>
-  <span ng-show="vm.hmFulltext" class="check-element sample-show-hide">{{ vm.hmText | limitTo:vm.hmLimit-vm.hmText.length}}</span>
-  <a ng-show="vm.hmFulltext" ng-click="vm.toggleValue()">{{ vm.hmLessText }}</a>
+<span name="text">
+	<span>{{ vm.initialText }}</span>
+	<span>{{ vm.remainingText }}</span>
 </span>
 
-<span ng-if="vm.hmText.length <= vm.hmLimit">{{ vm.hmText }}</span>
+<span name="toggle">
+	<span>{{ vm.toggleDots }}</span>
+	<a ng-click="vm.toggle()">{{ vm.toggleText }}</a>
+</span>
