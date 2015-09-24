@@ -53,3 +53,7 @@ gulp.task('test', ['build'], function (done) {
 		singleRun: true
 	}, done).start();
 });
+
+gulp.task('watch', ['build'], function () {
+	gulp.watch('src/**/*.*', ['build']);
+});
