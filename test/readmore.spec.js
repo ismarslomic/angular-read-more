@@ -1,5 +1,5 @@
 describe('hmReadMore', function () {
-	var element, scope;
+	var element, scope, controller;
 	var text100 = 'One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed in',
 		text99 = 'One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed i',
 		text101 = 'One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed int',
@@ -14,23 +14,23 @@ describe('hmReadMore', function () {
 		compile = $compile;
 	}));
 
-	it('should be compiled', function () {
-		element = compile('<hm-read-more hm-text="' + text99 +
-			'" hm-limit="100" hm-more-text="Read more" hm-less-text="Read less"></hm-read-more>')(scope);
+	it('should assign element attributes to the directive controller', function () {
+		element = compile('<hm-read-more hm-text="' + text99 + '" hm-limit="100" hm-more-text="My read more" ' +
+			'hm-less-text="My read less" hm-more-class="more-class" hm-less-class="less-class"></hm-read-more>')(scope);
 		scope.$digest();
-		expect(element.html()).not.toEqual(null);
+		controller = element.controller('hmReadMore');
+		expect(controller.hmText).toEqual(text99);
+		expect(controller.hmLimit).toEqual('100');
+		expect(controller.hmMoreText).toEqual('My read more');
+		expect(controller.hmLessText).toEqual('My read less');
+		expect(controller.hmMoreClass).toEqual('more-class');
+		expect(controller.hmLessClass).toEqual('less-class');
 	});
 
 	it('should work as an element', function () {
-		element = compile('<hm-read-more hm-text="' + text99 + '" hm-limit="100" hm-more-text="Read more" hm-less-text="Read less"></hm-read-more>')(scope);
-		scope.$digest();
-		expect(element.find('span').text()).toEqual(text99);
 	});
 
 	it('should work as an attribute', function () {
-		element = compile('<div hm-read-more hm-text="' + text99 + '" hm-limit="100" hm-more-text="Read more" hm-less-text="Read less"></div>')(scope);
-		scope.$digest();
-		expect(element.find('span').text()).toEqual(text99);
 	});
 
 	it('should require value in hm-text attribute', function () {
@@ -38,7 +38,7 @@ describe('hmReadMore', function () {
 
 	it('should use "Read more" as default text given hm-more-text attribute is empty', function () {
 
-	}); 
+	});
 
 	it('should use "Read less" as default text given hm-less-text attribute is empty', function () {
 
