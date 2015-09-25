@@ -27,6 +27,39 @@ describe('hmReadMore', function () {
 		expect(controller.hmLessClass).toEqual('less-class');
 	});
 
+	it('should set default moreText, lessText and limit', function () {
+		element = compile('<hm-read-more hm-text="' + text99 + '"></hm-read-more>')(scope);
+		scope.$digest();
+		controller = element.controller('hmReadMore');
+		expect(controller.hmText).toEqual(text99);
+		expect(controller.initialText).toEqual(text99);
+		expect(controller.remainingText).toBeUndefined('');
+
+		expect(controller.hmLimit).toBeUndefined();
+		expect(controller.hmMoreText).toEqual('Read more');
+		expect(controller.hmLessText).toEqual('Read less');
+		expect(controller.hmMoreClass).toBeUndefined();
+		expect(controller.hmLessClass).toBeUndefined();
+	});
+
+	it('should not show toggle button given limit not set', function () {
+		element = compile('<hm-read-more hm-text="' + text99 + '"></hm-read-more>')(scope);
+		scope.$digest();
+		controller = element.controller('hmReadMore');
+		expect(controller.initialText).toEqual(text99);
+		expect(controller.toggleText).toBeUndefined();
+		expect(controller.toggleDots).toBeUndefined();
+	});
+
+	it('should not show toggle button given limit equal 0', function () {
+		element = compile('<hm-read-more hm-text="' + text99 + '" hm-limit="0"></hm-read-more>')(scope);
+		scope.$digest();
+		controller = element.controller('hmReadMore');
+		expect(controller.initialText).toEqual(text99);
+		expect(controller.toggleText).toBeUndefined();
+		expect(controller.toggleDots).toBeUndefined();
+	});
+
 	it('should work as an element', function () {
 	});
 

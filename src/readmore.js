@@ -34,9 +34,11 @@ function readMore($templateCache, limitToFilter) {
 	// "bindToController: true" binds scope variables to Controller
 	function ReadMoreController($filter) {
 		var vm = this;
+		vm.hmMoreText = vm.hmMoreText || 'Read more';
+		vm.hmLessText = vm.hmLessText || 'Read less';
+		vm.hmLimit = vm.hmLimit || undefined;
 
-		vm.initialText = $filter('limitTo')(vm.hmText, vm.hmLimit);
-		showLess();
+		show();
 
 		vm.toggle = function () {
 			switch (vm.toggleState) {
@@ -46,6 +48,18 @@ function readMore($templateCache, limitToFilter) {
 				default:
 					showLess();
 			}
+		}
+
+		function show(){
+			if(vm.hmLimit && vm.hmLimit > 0){
+				vm.initialText = $filter('limitTo')(vm.hmText, vm.hmLimit);
+				showLess();
+			}
+			else
+			{
+				vm.initialText = vm.hmText;
+			}
+
 		}
 
 		function showMore() {
