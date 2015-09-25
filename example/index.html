@@ -1,18 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<script src="../bower_components/angular/angular.min.js"></script>
-	<script src="../bower_components/angular-animate/angular-animate.min.js"></script>
-	<script src="../dist/readmore.min.js"></script>
-	<meta charset="UTF-8">
-	<title>Read More AngularJS Directive</title>
+	<title>Angular-Read-More Directive</title>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+	<link rel="stylesheet" href="https://material.angularjs.org/HEAD/angular-material.css">
+	<link rel="stylesheet" href="https://material.angularjs.org/HEAD/docs.css">
+	<style>
+		md-whiteframe {
+			padding: 10px;
+		}
+	</style>
 </head>
-<body ng-app="hm.readmore">
-<hm-read-more
-	hm-text="One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed in Bangalore"
-	hm-limit="100"
-	hm-more-text="Read more"
-	hm-less-text="Read less">
-</hm-read-more>
+<body layout="row">
+<md-content layout-padding style="height: 600px;padding: 24px;" ng-app="MyApp">
+	<h1>Example 1</h1>
+
+	<h2>Options</h2>
+	<ul>
+		<li>hm-text.length: 100</li>
+		<li>hm-limit: 0</li>
+		<li>directive as: attribute</li>
+	</ul>
+	<h2>Result</h2>
+	<md-whiteframe class="md-whiteframe-z1" layout="">
+		<div hm-read-more
+			 hm-text="One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed in"
+			 hm-limit="0">
+		</div>
+	</md-whiteframe>
+	<h1>Example 2</h1>
+
+	<h2>Options</h2>
+	<ul>
+		<li>hm-text.length: 100</li>
+		<li>hm-limit: 50</li>
+		<li>directive as: attribute</li>
+	</ul>
+	<h2>Result</h2>
+	<md-whiteframe class="md-whiteframe-z1" layout="">
+		<div hm-read-more
+			 hm-text="One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed in"
+			 hm-limit="50">
+		</div>
+	</md-whiteframe>
+	<h1>Example 3</h1>
+
+	<h2>Options</h2>
+	<ul>
+		<li>hm-text.length: 200</li>
+		<li>hm-limit: 50</li>
+		<li>hm-more-text: More</li>
+		<li>hm-less-text: Less</li>
+		<li>directive as: element</li>
+	</ul>
+	<h2>Result</h2>
+
+	<md-whiteframe class="md-whiteframe-z1" layout="">
+		<div hm-read-more
+			 hm-text="One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed
+			 into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could se"
+			 hm-limit="50" hm-more-text="More" hm-less-text="Less">
+		</div>
+	</md-whiteframe>
+
+</md-content>
+<script src="../bower_components/angular/angular.min.js"></script>
+<script src="../bower_components/angular-animate/angular-animate.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-aria.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angular_material/0.11.0/angular-material.min.js"></script>
+<script src="../dist/readmore.min.js"></script>
+<script>
+	angular.module('MyApp', ['ngMaterial', 'hm.readmore']);
+</script>
+
 </body>
 </html>
