@@ -13,60 +13,63 @@
 	<style>
 		md-whiteframe {
 			padding: 10px;
+			background-color: #E3F2FD;
 		}
+
+		a {
+			color: blue;
+			cursor: pointer;
+		}
+
+		.more-show-hide {
+			-webkit-transition: all linear 0.2s;
+			transition: all linear 0.2s;
+		}
+
+		.more-show-hide.ng-hide {
+			opacity: 0;
+		}
+
+
 	</style>
 </head>
 <body layout="row">
 <md-content layout-padding style="height: 600px;padding: 24px;" ng-app="MyApp">
-	<h1>Example 1</h1>
+	<div ng-controller="ExampleController">
+		<h1>Example: Angular Read More Directive</h1>
 
-	<h2>Options</h2>
-	<ul>
-		<li>hm-text.length: 100</li>
-		<li>hm-limit: 0</li>
-		<li>directive as: attribute</li>
-	</ul>
-	<h2>Result</h2>
-	<md-whiteframe class="md-whiteframe-z1" layout="">
-		<div hm-read-more
-			 hm-text="One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed in"
-			 hm-limit="0">
-		</div>
-	</md-whiteframe>
-	<h1>Example 2</h1>
+		<h2>Dynamic options</h2>
 
-	<h2>Options</h2>
-	<ul>
-		<li>hm-text.length: 100</li>
-		<li>hm-limit: 50</li>
-		<li>directive as: attribute</li>
-	</ul>
-	<h2>Result</h2>
-	<md-whiteframe class="md-whiteframe-z1" layout="">
-		<div hm-read-more
-			 hm-text="One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed in"
-			 hm-limit="50">
-		</div>
-	</md-whiteframe>
-	<h1>Example 3</h1>
+		<form name="userForm">
+			<md-input-container flex>
+				<label>Text</label>
+				<textarea ng-model="text" columns="1" md-maxlength="300"></textarea>
+			</md-input-container>
+			<md-input-container flex>
+				<label>Limit</label>
+				<input ng-model="limit" type="number"/>
+			</md-input-container>
+			<md-input-container flex>
+				<label>Less text</label>
+				<input ng-model="lessText" type="text"/>
+			</md-input-container>
+			<md-input-container flex>
+				<label>More text</label>
+				<input ng-model="moreText" type="text"/>
+			</md-input-container>
+		</form>
 
-	<h2>Options</h2>
-	<ul>
-		<li>hm-text.length: 200</li>
-		<li>hm-limit: 50</li>
-		<li>hm-more-text: More</li>
-		<li>hm-less-text: Less</li>
-		<li>directive as: element</li>
-	</ul>
-	<h2>Result</h2>
+		<h2>Result</h2>
 
-	<md-whiteframe class="md-whiteframe-z1" layout="">
-		<div hm-read-more
-			 hm-text="One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed
-			 into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could se"
-			 hm-limit="50" hm-more-text="More" hm-less-text="Less">
-		</div>
-	</md-whiteframe>
+		<md-whiteframe class="md-whiteframe-z1" layout="">
+			<div hm-read-more
+				 hm-text="{{text}}"
+				 hm-limit="{{limit}}"
+				 hm-more-text="{{moreText}}"
+				 hm-less-text="{{lessText}}">
+			</div>
+		</md-whiteframe>
+	</div>
 
 </md-content>
 <script src="../bower_components/angular/angular.min.js"></script>
@@ -75,7 +78,24 @@
 <script src="//ajax.googleapis.com/ajax/libs/angular_material/0.11.0/angular-material.min.js"></script>
 <script src="../dist/readmore.min.js"></script>
 <script>
-	angular.module('MyApp', ['ngMaterial', 'hm.readmore']);
+	var app = angular.module('MyApp', ['ngMaterial', 'hm.readmore']);
+	app.config(function ($mdThemingProvider) {
+		$mdThemingProvider
+			.theme('default')
+			.primaryPalette('grey')
+			.accentPalette('pink')
+			.warnPalette('red')
+	})
+
+	app.controller('ExampleController', Example4Controller);
+
+	/** @ngInject */
+	function Example4Controller($scope) {
+		$scope.text = '123456789';
+		$scope.limit = 8;
+		$scope.lessText = "Less";
+		$scope.moreText = "More";
+	}
 </script>
 
 </body>

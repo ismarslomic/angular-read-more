@@ -1,9 +1,8 @@
 <span name="text">
-	<span>{{ vm.initialText }}</span>
-	<span>{{ vm.remainingText }}</span>
+	<span>{{ vm.lessText }}</span><span ng-show="vm.showMoreText" class="more-show-hide">{{ vm.moreText }}</span>
 </span>
 
-<span name="toggle">
-	<span>{{ vm.toggleDots }}</span>
-	<a ng-click="vm.toggle()">{{ vm.toggleText }}</a>
+<span name="toggle" ng-show="vm.toggle.show">
+	<span ng-show="!vm.toggle.state">{{ vm.toggle.dots }}</span>
+	<a ng-click="vm.doToggle()">{{ vm.toggle.text }}</a>
 </span>

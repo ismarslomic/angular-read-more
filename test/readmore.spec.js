@@ -60,6 +60,24 @@ describe('hmReadMore', function () {
 		expect(controller.toggleDots).toBeUndefined();
 	});
 
+	it('should not show toggle button given hmText length < hm-limit', function () {
+		element = compile('<hm-read-more hm-text="' + text99 + '" hm-limit="100"></hm-read-more>')(scope);
+		scope.$digest();
+		controller = element.controller('hmReadMore');
+		expect(controller.showRemainingText).toBeFalsy();
+		expect(controller.initialText).toEqual(text99);
+		expect(controller.toggleText).toBeUndefined();
+		expect(controller.toggleDots).toBeUndefined();
+	});
+
+	it('should not show toggle button given hmText length == hm-limit', function () {
+
+	});
+
+	it('should not show toggle button given hmText length > hm-limit', function () {
+
+	});
+
 	it('should work as an element', function () {
 	});
 
@@ -81,15 +99,4 @@ describe('hmReadMore', function () {
 
 	});
 
-	it('should not display three dots given text length < hm-limit attribute', function () {
-
-	});
-
-	it('should not display three dots given text length == hm-limit attribute', function () {
-
-	});
-
-	it('should  display three dots given text length > hm-limit attribute', function () {
-
-	});
 });
