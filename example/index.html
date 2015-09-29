@@ -29,14 +29,12 @@
 		.more-show-hide.ng-hide {
 			opacity: 0;
 		}
-
-
 	</style>
 </head>
 <body layout="row">
 <md-content layout-padding style="height: 600px;padding: 24px;" ng-app="MyApp">
 	<div ng-controller="ExampleController">
-		<h1>Example: Angular Read More Directive</h1>
+		<h1>Angular Read More Directive</h1>
 
 		<h2>Dynamic options</h2>
 
@@ -72,11 +70,11 @@
 	</div>
 
 </md-content>
-<script src="../bower_components/angular/angular.min.js"></script>
-<script src="../bower_components/angular-animate/angular-animate.min.js"></script>
+<script src="/bower_components/angular/angular.min.js"></script>
+<script src="/bower_components/angular-animate/angular-animate.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-aria.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angular_material/0.11.0/angular-material.min.js"></script>
-<script src="../dist/readmore.min.js"></script>
+<script src="/dist/readmore.min.js"></script>
 <script>
 	var app = angular.module('MyApp', ['ngMaterial', 'hm.readmore']);
 	app.config(function ($mdThemingProvider) {

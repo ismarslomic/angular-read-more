@@ -7,8 +7,9 @@ var gulp = require('gulp'),
 	concat = require('gulp-concat'),
 	templateCache = require('gulp-angular-templatecache'),
 	uglify = require('gulp-uglify'),
-	rename = require("gulp-rename"),
-	ngAnnotate = require('gulp-ng-annotate');
+	rename = require('gulp-rename'),
+	ngAnnotate = require('gulp-ng-annotate'),
+	browserSync = require('browser-sync');
 
 
 // Use the gulp-angular-templatecache in order to create JS file of HTML templates to
@@ -54,6 +55,19 @@ gulp.task('test', ['build'], function (done) {
 	}, done).start();
 });
 
-gulp.task('watch', ['build'], function () {
+gulp.task('browser-sync', function () {
+	browserSync.init(
+		['./dist/*.*', './example/*.*'], {
+			server: {
+				baseDir: ['example'],
+				routes: {
+					'/bower_components': 'bower_components',
+					'/dist': 'dist'
+				}
+			}
+		});
+});
+
+gulp.task('watch', ['build', 'browser-sync'], function () {
 	gulp.watch('src/**/*.*', ['build']);
 });
