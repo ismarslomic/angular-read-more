@@ -38,7 +38,7 @@ function readMore($templateCache, limitToFilter) {
 			dots: '...'
 		}
 
-		function checkIfEmptyMoreLessText(){
+		function checkIfEmptyMoreLessText() {
 			vm.hmMoreText = vm.hmMoreText || 'Read more';
 			vm.hmLessText = vm.hmLessText || 'Read less';
 		}
@@ -88,25 +88,37 @@ function readMore($templateCache, limitToFilter) {
 			setToggleText();
 		}
 
-		checkIfEmptyMoreLessText();
-		checkIfNegativeLimit();
-		splitTextToLessAndMore();
-		showToggle();
+		function initialize() {
+			checkIfEmptyMoreLessText();
+			checkIfNegativeLimit();
+			splitTextToLessAndMore();
+			showToggle();
+		}
 
-		$scope.$watch('vm.hmText', function (newValue) {
-			textChanged();
+		initialize();
+
+		$scope.$watch('vm.hmText', function (newValue, oldValue) {
+			if (newValue != oldValue) {
+				textChanged();
+			}
 		}.bind(this));
 
-		$scope.$watch('vm.hmLimit', function (newValue) {
-			limitChanged();
+		$scope.$watch('vm.hmLimit', function (newValue, oldValue) {
+			if (newValue != oldValue) {
+				limitChanged();
+			}
 		}.bind(this));
 
-		$scope.$watch('vm.hmMoreText', function (newValue) {
-			moreOrLessTextChanged();
+		$scope.$watch('vm.hmMoreText', function (newValue, oldValue) {
+			if (newValue != oldValue) {
+				moreOrLessTextChanged();
+			}
 		}.bind(this));
 
-		$scope.$watch('vm.hmLessText', function (newValue) {
-			moreOrLessTextChanged();
+		$scope.$watch('vm.hmLessText', function (newValue, oldValue) {
+			if (newValue != oldValue) {
+				moreOrLessTextChanged();
+			}
 		}.bind(this));
 	}
 };
