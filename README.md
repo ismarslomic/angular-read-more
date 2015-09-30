@@ -1,5 +1,5 @@
 # hm-read-more
-> AngularJS directive that adds read more / read less links to your text when it exeeds certain limit of characters
+> AngularJS directive that limit text and adds read more / read less links to your text when it exeeds certain limit of characters
 
 
 ## Install client side
@@ -7,7 +7,21 @@
 $ bower install angular-read-more --save-dev 
 ```
 
-## How to use - HTML
+## Include bower module
+```html
+<script src="/bower_components/angular-read-more/readmore.min.js"></script>
+```
+
+## Example
+```bash
+$ git clone
+$ npm install
+$ bower install
+$ gulp watch
+```
+
+## How to use in HTML
+As element
 ```
 <hm-read-more
 		hm-text="{{ text }}" 
@@ -17,8 +31,18 @@ $ bower install angular-read-more --save-dev
 </hm-read-more>
 ```
 
-* `hm-text` - text
-* `hm-limit` - number of maximum characters before adding "..." and the more/less text. Default: unlimited
+As attribute
+```
+<div hm-read-more
+		hm-text="{{ text }}" 
+		hm-limit="100" 
+		hm-more-text="read more" 
+		hm-less-text="read less">
+</div>
+```
+
+* `hm-text` - full text
+* `hm-limit` - number > 0 of maximum characters before adding "..." and the more/less text. Default: unlimited
 * `hm-more-text` - link text for read more. Default: Read more
 * `hm-less-text` - link text for read less. Default: Read less
 * `hm-more-class` - css class for read more link
@@ -30,9 +54,6 @@ $ npm install
 $ gulp build
 $ gulp test
 ```
-
-## Example
-See the [example folder](example)
 
 ##Demo
 [Plnkr Demo](http://plnkr.co/7ggKNRw7nwCLmPN0y4Az)
