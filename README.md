@@ -7,12 +7,7 @@
 $ bower install angular-read-more --save-dev 
 ```
 
-## Include bower module
-```html
-<script src="/bower_components/angular-read-more/readmore.min.js"></script>
-```
-
-## Example
+## Run example locally
 ```bash
 $ git clone
 $ npm install
@@ -20,9 +15,22 @@ $ bower install
 $ gulp watch
 ```
 
-## How to use in HTML
-As element
+## Test locally
+```bash
+$ git clone
+$ npm install
+$ bower install
+$ gulp test
 ```
+
+## How to use in HTML
+Include JS script
+```html
+<script src="/bower_components/angular-read-more/readmore.min.js"></script>
+```
+
+As element
+```html
 <hm-read-more
 		hm-text="{{ text }}" 
 		hm-limit="100" 
@@ -32,7 +40,7 @@ As element
 ```
 
 As attribute
-```
+```html
 <div hm-read-more
 		hm-text="{{ text }}" 
 		hm-limit="100" 
@@ -48,12 +56,6 @@ As attribute
 * `hm-more-class` - css class for read more link
 * `hm-less-class` - css class for read less link
 
-## Build locally
-```bash
-$ npm install 
-$ gulp build
-$ gulp test
-```
 
 ##Demo
 [Plnkr Demo](http://plnkr.co/7ggKNRw7nwCLmPN0y4Az)
