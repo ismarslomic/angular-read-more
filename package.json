@@ -41,9 +41,14 @@
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^1.4.1",
     "karma": "~0.13.10",
+    "karma-angular-filesort": "^1.0.0",
     "karma-chrome-launcher": "~0.2.0",
+    "karma-coverage": "^0.5.2",
     "karma-firefox-launcher": "~0.1.6",
     "karma-jasmine": "~0.3.6",
-    "karma-mocha-reporter": "^1.1.1"
+    "karma-mocha-reporter": "^1.1.1",
+    "karma-ng-html2js-preprocessor": "^0.1.2",
+    "karma-phantomjs-launcher": "^0.2.1",
+    "phantomjs": "^1.9.18"
   }
 }

@@ -11,7 +11,7 @@ angular
 	.directive('hmReadMore', readMore);
 
 /** @ngInject */
-function readMore($templateCache, limitToFilter) {
+function readMore($templateCache) {
 	var directive = {
 		restrict: 'AE',
 		scope: {
@@ -23,7 +23,7 @@ function readMore($templateCache, limitToFilter) {
 			hmLessClass: '@'
 		},
 		template: $templateCache.get('readmore.template.html'),
-		controller: ReadMoreController,
+		controller: hmReadMoreController,
 		controllerAs: 'vm',
 		bindToController: true
 	};
@@ -32,93 +32,103 @@ function readMore($templateCache, limitToFilter) {
 
 	/** @ngInject */
 	// "bindToController: true" binds scope variables to Controller
-	function ReadMoreController($filter, $scope, $log) {
+	function hmReadMoreController($filter, $scope, $log) {
 		var vm = this;
 		vm.toggle = {
 			dots: '...'
 		}
 
-		function checkIfEmptyMoreLessText() {
-			vm.hmMoreText = vm.hmMoreText || 'Read more';
-			vm.hmLessText = vm.hmLessText || 'Read less';
+		// Toggle functions
+		function setToggleMoreText() {
+			$log.debug('setToggleMoreText');
+			vm.toggle.moreText = vm.hmMoreText || 'Read more';
 		}
 
+		function setToggleLessText() {
+			$log.debug('setToggleLessText');
+			vm.toggle.lessText = vm.hmLessText || 'Read less';
+		}
+
+		function setCurrentToggleText() {
+			$log.debug('setCurrentToggleText');
+			vm.toggle.text = vm.toggle.state ? vm.toggle.lessText : vm.toggle.moreText;
+		}
+
+		function setShowToggle() {
+			$log.debug('setShowToggle');
+			vm.toggle.show = vm.moreText && vm.moreText.length > 0;
+		}
+
+		vm.doToggle = function () {
+			$log.debug('doToggle');
+			vm.toggle.state = !vm.toggle.state;
+			vm.showMoreText = !vm.showMoreText;
+			setCurrentToggleText();
+		}
+
+		$scope.$watch('vm.hmMoreText', function (newValue, oldValue) {
+			if (newValue != oldValue) {
+				$log.debug('hmMoreText changed');
+				setToggleMoreText();
+				setCurrentToggleText();
+			}
+		});
+
+		$scope.$watch('vm.hmLessText', function (newValue, oldValue) {
+			if (newValue != oldValue) {
+				$log.debug('hmLessText changed');
+				setToggleLessText();
+				setCurrentToggleText();
+			}
+		});
+
+		// ----------
+
 		// If negative number, set to undefined
-		function checkIfNegativeLimit() {
-			vm.hmLimit = (vm.hmLimit && vm.hmLimit < 0) ? undefined : vm.hmLimit;
+		function validateLimit() {
+			$log.debug('validateLimit');
+			vm.hmLimit = (vm.hmLimit && vm.hmLimit <= 0) ? undefined : vm.hmLimit;
 		}
 
 		function getMoreTextLimit() {
+			$log.debug('getMoreTextLimit');
 			return vm.hmLimit && vm.hmLimit < vm.hmText.length ? vm.hmLimit - vm.hmText.length : 0;
 		}
 
-		function setToggleText() {
-			vm.toggle.text = vm.toggle.state ? vm.hmLessText : vm.hmMoreText;
-		}
-
-		function splitTextToLessAndMore() {
+		function setLessAndMoreText() {
+			$log.debug('setLessAndMoreText');
 			vm.lessText = $filter('limitTo')(vm.hmText, vm.hmLimit);
 			vm.moreText = $filter('limitTo')(vm.hmText, getMoreTextLimit());
 		}
 
-		function showToggle() {
-			vm.toggle.show = vm.moreText && vm.moreText.length > 0;
-			setToggleText();
-		}
-
-		function textChanged() {
-			splitTextToLessAndMore();
-			showToggle();
-		}
-
-		function limitChanged() {
-			checkIfNegativeLimit();
-			splitTextToLessAndMore();
-			showToggle();
-		}
-
-		function moreOrLessTextChanged() {
-			checkIfEmptyMoreLessText();
-			showToggle();
-		}
-
-		vm.doToggle = function () {
-			vm.toggle.state = !vm.toggle.state;
-			vm.showMoreText = !vm.showMoreText;
-			setToggleText();
-		}
-
 		function initialize() {
-			checkIfEmptyMoreLessText();
-			checkIfNegativeLimit();
-			splitTextToLessAndMore();
-			showToggle();
+			$log.debug('initialize');
+			setToggleMoreText();
+			setToggleLessText();
+			validateLimit();
+			setLessAndMoreText();
+			setShowToggle();
+			setCurrentToggleText();
 		}
 
 		initialize();
 
 		$scope.$watch('vm.hmText', function (newValue, oldValue) {
 			if (newValue != oldValue) {
-				textChanged();
+				$log.debug('hmText changed');
+				validateLimit();
+				setLessAndMoreText();
+				setShowToggle();
 			}
-		}.bind(this));
+		});
 
 		$scope.$watch('vm.hmLimit', function (newValue, oldValue) {
 			if (newValue != oldValue) {
-				limitChanged();
+				$log.debug('hmLimit changed');
+				validateLimit();
+				setLessAndMoreText();
+				setShowToggle();
 			}
-		}.bind(this));
-
-		$scope.$watch('vm.hmMoreText', function (newValue, oldValue) {
-			if (newValue != oldValue) {
-				moreOrLessTextChanged();
-			}
-		}.bind(this));
-
-		$scope.$watch('vm.hmLessText', function (newValue, oldValue) {
-			if (newValue != oldValue) {
-				moreOrLessTextChanged();
-			}
-		}.bind(this));
+		});
 	}
 };
