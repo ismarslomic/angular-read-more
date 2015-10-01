@@ -1,4 +1,5 @@
 # hm-read-more
+[![Build Status](https://travis-ci.org/ismarslomic/angular-read-more.svg?branch=master)](https://travis-ci.org/ismarslomic/angular-read-more)
 > AngularJS directive that limit text and adds read more / read less links to your text when it exeeds certain limit of characters
 
 
