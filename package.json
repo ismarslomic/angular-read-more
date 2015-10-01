@@ -3,7 +3,6 @@
 	"version": "1.0.0",
 	"description": "Simple AngularJS read more directive",
 	"main": "./src/readmore.js",
-	,
 	"repository": {
 		"type": "git",
 		"url": "git://github.com/hiteshmodha/angular-read-more.git"
