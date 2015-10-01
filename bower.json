@@ -1,0 +1,12 @@
+{
+	"name": "angular-read-more",
+	"version": "1.0.0",
+	"main": "/src/readmore.js",
+	"dependencies": {
+		"angular": "~1.4.6",
+		"angular-animate": "~1.4.6"
+	},
+	"devDependencies": {
+		"angular-mocks": "~1.4.6"
+	}
+}

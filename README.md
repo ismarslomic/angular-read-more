@@ -1,28 +1,64 @@
+# hm-read-more
+> AngularJS directive that limit text and adds read more / read less links to your text when it exeeds certain limit of characters
 
-##Requirements
-* Angularjs
 
-##How to use - HTML
+## Install client side
+```bash
+$ bower install angular-read-more --save-dev 
 ```
-<hm-read 
-		hmtext="{{ text }}" 
-		hmlimit="100" 
+
+## Run example locally
+```bash
+$ git clone
+$ npm install
+$ bower install
+$ gulp watch
+```
+
+## Test locally
+```bash
+$ git clone
+$ npm install
+$ bower install
+$ gulp test
+```
+
+## How to use in HTML
+Include JS script
+```html
+<script src="/bower_components/angular-read-more/readmore.min.js"></script>
+```
+
+As element
+```html
+<hm-read-more
+		hm-text="{{ text }}" 
+		hm-limit="100" 
 		hm-more-text="read more" 
 		hm-less-text="read less">
-</hm-read>
+</hm-read-more>
 ```
 
-* hmtext  - text
-* hmlimit - no of character after which you want to put ...
-* hm-more-text - link text for read more.
-* hm-less-text - link text for read less.
-* hm-more-class - css class for more link
-* hm-less-class - css class for more link
+As attribute
+```html
+<div hm-read-more
+		hm-text="{{ text }}" 
+		hm-limit="100" 
+		hm-more-text="read more" 
+		hm-less-text="read less">
+</div>
+```
+
+* `hm-text` - full text
+* `hm-limit` - number > 0 of maximum characters before adding "..." and the more/less text. Default: unlimited
+* `hm-more-text` - link text for read more. Default: Read more
+* `hm-less-text` - link text for read less. Default: Read less
+* `hm-more-class` - css class for read more link
+* `hm-less-class` - css class for read less link
+
 
 ##Demo
-
 [Plnkr Demo](http://plnkr.co/7ggKNRw7nwCLmPN0y4Az)
 
 ##License
-
-Angular-autocomplete is licensed under the MIT license.
+angular-read-more is licensed under the MIT license.
