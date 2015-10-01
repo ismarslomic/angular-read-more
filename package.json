@@ -1,54 +1,55 @@
 {
-  "name": "angular-read-more",
-  "version": "1.0.0",
-  "description": "Simple AngularJS read more directive",
-  "main": "./src/readmore.js",
-  "scripts": {
-    "test": "./node_modules/karma/bin/karma start karma.conf.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/hiteshmodha/angular-read-more.git"
-  },
-  "keywords": [
-    "angular",
-    "angularjs",
-    "readmore",
-    "directive"
-  ],
-  "contributors": [
-    {
-      "name": "Hitesh Modha",
-      "email": "hiteshmodha10@gmail.com"
-    },
-    {
-      "name": "Ismar Slomic",
-      "email": "ismar@slomic.no"
-    }
-  ],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/hiteshmodha/angular-read-more/issues"
-  },
-  "homepage": "https://github.com/hiteshmodha/angular-read-more",
-  "devDependencies": {
-    "browser-sync": "^2.9.6",
-    "gulp": "^3.9.0",
-    "gulp-angular-templatecache": "^1.7.0",
-    "gulp-clean": "^0.3.1",
-    "gulp-concat": "^2.6.0",
-    "gulp-ng-annotate": "^1.1.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-uglify": "^1.4.1",
-    "karma": "~0.13.10",
-    "karma-angular-filesort": "^1.0.0",
-    "karma-chrome-launcher": "~0.2.0",
-    "karma-coverage": "^0.5.2",
-    "karma-firefox-launcher": "~0.1.6",
-    "karma-jasmine": "~0.3.6",
-    "karma-mocha-reporter": "^1.1.1",
-    "karma-ng-html2js-preprocessor": "^0.1.2",
-    "karma-phantomjs-launcher": "^0.2.1",
-    "phantomjs": "^1.9.18"
-  }
+	"name": "angular-read-more",
+	"version": "1.0.0",
+	"description": "Simple AngularJS read more directive",
+	"main": "./src/readmore.js",
+	,
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/hiteshmodha/angular-read-more.git"
+	},
+	"keywords": [
+		"angular",
+		"angularjs",
+		"readmore",
+		"directive"
+	],
+	"contributors": [
+		{
+			"name": "Hitesh Modha",
+			"email": "hiteshmodha10@gmail.com"
+		},
+		{
+			"name": "Ismar Slomic",
+			"email": "ismar@slomic.no"
+		}
+	],
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/hiteshmodha/angular-read-more/issues"
+	},
+	"homepage": "https://github.com/hiteshmodha/angular-read-more",
+	"devDependencies": {
+		"browser-sync": "^2.9.6",
+		"coveralls": "^2.11.4",
+		"gulp": "^3.9.0",
+		"gulp-angular-templatecache": "^1.7.0",
+		"gulp-clean": "^0.3.1",
+		"gulp-concat": "^2.6.0",
+		"gulp-coveralls": "^0.1.4",
+		"gulp-ng-annotate": "^1.1.0",
+		"gulp-rename": "^1.2.2",
+		"gulp-shell": "^0.4.3",
+		"gulp-uglify": "^1.4.1",
+		"karma": "~0.13.10",
+		"karma-angular-filesort": "^1.0.0",
+		"karma-chrome-launcher": "~0.2.0",
+		"karma-coverage": "^0.5.2",
+		"karma-firefox-launcher": "~0.1.6",
+		"karma-jasmine": "~0.3.6",
+		"karma-mocha-reporter": "^1.1.1",
+		"karma-ng-html2js-preprocessor": "^0.1.2",
+		"karma-phantomjs-launcher": "^0.2.1",
+		"phantomjs": "^1.9.18"
+	}
 }

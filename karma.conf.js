@@ -38,7 +38,10 @@ module.exports = function (config) {
 				'karma-ng-html2js-preprocessor'
 			],
 
-			reporters: ['mocha', 'coverage'],
+			reporters: [
+				'mocha',
+				'coverage'
+			],
 
 
 			preprocessors: {
@@ -50,8 +53,12 @@ module.exports = function (config) {
 			},
 
 			coverageReporter: {
-				type: 'html',
-				dir: 'coverage/'
+				dir: 'coverage/',
+				reporters: [
+					// reporters not supporting the `file` property
+					{ type: 'html', subdir: 'report-html' },
+					{ type: 'lcov', subdir: 'report-lcov' }
+				]
 			},
 
 			captureTimeout: 60000,
