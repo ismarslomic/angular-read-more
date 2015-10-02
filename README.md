@@ -38,7 +38,9 @@ As element
 		hm-text="{{ text }}" 
 		hm-limit="100" 
 		hm-more-text="read more" 
-		hm-less-text="read less">
+		hm-less-text="read less"
+		hm-dots-class="dots"
+        hm-link-class="links">
 </hm-read-more>
 ```
 
@@ -48,7 +50,9 @@ As attribute
 		hm-text="{{ text }}" 
 		hm-limit="100" 
 		hm-more-text="read more" 
-		hm-less-text="read less">
+		hm-less-text="read less"
+		hm-dots-class="dots"
+        hm-link-class="links">
 </div>
 ```
 
@@ -56,12 +60,12 @@ As attribute
 * `hm-limit` - number > 0 of maximum characters before adding "..." and the more/less text. Default: unlimited
 * `hm-more-text` - link text for read more. Default: Read more
 * `hm-less-text` - link text for read less. Default: Read less
-* `hm-more-class` - css class for read more link
-* `hm-less-class` - css class for read less link
+* `hm-dots-class` - css class for dots
+* `hm-link-class` - css class for links of read more/read less text
 
 
-##Demo
-[Plnkr Demo](http://plnkr.co/7ggKNRw7nwCLmPN0y4Az)
+##Screenshot
+![AngularJS Read More][angular-read-more]
 
 ##License
 angular-read-more is licensed under the MIT license.
