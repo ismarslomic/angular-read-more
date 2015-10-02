@@ -1,7 +1,8 @@
 {
 	"name": "angular-read-more",
 	"description": "AngularJS Read More Directive",
-	"main": "src/readmore.js",
+	"version": "1.0.0.",
+	"main": "dist/readmore.min.js",
 	"keywords": [
 		"angular",
 		"angularjs",
@@ -19,11 +20,18 @@
 		}
 	],
 	"ignore": [
-		"**/.*",
-		"node_modules",
-		"coverage",
 		"bower_components",
-		"example"
+		"coverage",
+		"example",
+		"node_modules",
+		"src",
+		".editorconfig",
+		".gitignore",
+		".npmignore",
+		".travis.yml",
+		"angular-read-more.png",
+		"gulpfile.js",
+		"karma.conf.js"
 	],
 	"dependencies": {
 		"angular": "~1.4.6",
