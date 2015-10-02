@@ -23,7 +23,7 @@ $ gulp watch
 $ git clone
 $ npm install
 $ bower install
-$ gulp test
+$ gulp karma
 ```
 
 ## How to use in HTML
