@@ -9,7 +9,7 @@
 angular
 	.module('hm.readmore', ['ngAnimate'])
 	.directive('hmReadMore', readMore)
-	.config(function($logProvider){
+	.config(function ($logProvider) {
 		$logProvider.debugEnabled(false);
 	});
 
@@ -22,8 +22,8 @@ function readMore($templateCache) {
 			hmLimit: '@',
 			hmMoreText: '@',
 			hmLessText: '@',
-			hmMoreClass: '@',
-			hmLessClass: '@'
+			hmToggleDotsClass: '@',
+			hmToggleLinkClass: '@'
 		},
 		template: $templateCache.get('readmore.template.html'),
 		controller: hmReadMoreController,
@@ -38,7 +38,9 @@ function readMore($templateCache) {
 	function hmReadMoreController($filter, $scope, $log) {
 		var vm = this;
 		vm.toggle = {
-			dots: '...'
+			dots: '...',
+			dotsClass: vm.hmToggleDotsClass,
+			linkClass: vm.hmToggleLinkClass
 		}
 
 		// Toggle functions

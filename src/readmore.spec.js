@@ -14,15 +14,15 @@ describe('hmReadMoreController', function () {
 
 	it('should assign element attributes to the directive controller', function () {
 		element = compile('<hm-read-more hm-text="' + text99 + '" hm-limit="100" hm-more-text="My read more" ' +
-			'hm-less-text="My read less" hm-more-class="more-class" hm-less-class="less-class"></hm-read-more>')(scope);
+			'hm-less-text="My read less" hm-toggle-dots-class="toggle-dots" hm-toggle-link-class="toggle-link"></hm-read-more>')(scope);
 		scope.$digest();
 		controller = element.controller('hmReadMore');
 		expect(controller.hmText).toEqual(text99);
 		expect(controller.hmLimit).toEqual('100');
 		expect(controller.hmMoreText).toEqual('My read more');
 		expect(controller.hmLessText).toEqual('My read less');
-		expect(controller.hmMoreClass).toEqual('more-class');
-		expect(controller.hmLessClass).toEqual('less-class');
+		expect(controller.hmToggleDotsClass).toEqual('toggle-dots');
+		expect(controller.hmToggleLinkClass).toEqual('toggle-link');
 	});
 
 	it('should set default value for toggle.moreText if not set', function () {

@@ -3,6 +3,6 @@
 </span>
 
 <span name="toggle" ng-show="vm.toggle.show">
-	<span ng-show="!vm.toggle.state">{{ vm.toggle.dots }}</span>
-	<a ng-click="vm.doToggle()">{{ vm.toggle.text }}</a>
+	<span ng-class="vm.toggle.dotsClass" ng-show="!vm.toggle.state">{{ vm.toggle.dots }}</span>
+	<a ng-class="vm.toggle.linkClass" ng-click="vm.doToggle()">{{ vm.toggle.text }}</a>
 </span>

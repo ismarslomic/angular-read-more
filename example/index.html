@@ -29,6 +29,14 @@
 		.more-show-hide.ng-hide {
 			opacity: 0;
 		}
+
+		.toggle-dots {
+			color: darkgrey;
+		}
+
+		.toggle-link {
+			color: green;
+		}
 	</style>
 </head>
 <body layout="row">
@@ -59,12 +67,15 @@
 
 		<h2>Result</h2>
 
-		<md-whiteframe class="md-whiteframe-z1" flex="25" layout layout-align="center center">
+		<md-whiteframe class="md-whiteframe-z1" layout layout-align="center center">
 			<div hm-read-more
 				 hm-text="{{text}}"
 				 hm-limit="{{limit}}"
 				 hm-more-text="{{moreText}}"
-				 hm-less-text="{{lessText}}">
+				 hm-less-text="{{lessText}}"
+				 hm-toggle-dots-class="toggle-dots"
+				 hm-toggle-link-class="toggle-link"
+				>
 			</div>
 		</md-whiteframe>
 	</div>
@@ -88,7 +99,7 @@
 
 	/** @ngInject */
 	function Example4Controller($scope) {
-		$scope.text = '123456789';
+		$scope.text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque gravida vel erat eu vestibulum. Maecenas malesuada, ante at venenatis porta, erat risus porta massa, ac vestibulum libero ex id mauris. Sed faucibus arcu eget lorem vestibulum congue. Phasellus at elit non dolor semper eleifend. Donec nec maximus purus. Donec pretium orci sed ullamcorper scelerisque. Nullam quis elit tristique, interdum eros quis, tincidunt tortor. Fusce odio enim, maximus in sollicitudin vitae, fermentum in elit. Aliquam pretium odio condimentum, fringilla risus in, mollis mi. Phasellus ullamcorper enim vehicula mi commodo laoreet.';
 		$scope.limit = 0;
 		$scope.lessText = "Less";
 		$scope.moreText = "More";
