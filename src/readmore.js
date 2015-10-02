@@ -22,8 +22,8 @@ function readMore($templateCache) {
 			hmLimit: '@',
 			hmMoreText: '@',
 			hmLessText: '@',
-			hmToggleDotsClass: '@',
-			hmToggleLinkClass: '@'
+			hmDotsClass: '@',
+			hmLinkClass: '@'
 		},
 		template: $templateCache.get('readmore.template.html'),
 		controller: hmReadMoreController,
@@ -39,8 +39,8 @@ function readMore($templateCache) {
 		var vm = this;
 		vm.toggle = {
 			dots: '...',
-			dotsClass: vm.hmToggleDotsClass,
-			linkClass: vm.hmToggleLinkClass
+			dotsClass: vm.hmDotsClass,
+			linkClass: vm.hmLinkClass
 		}
 
 		// Toggle functions
@@ -84,6 +84,20 @@ function readMore($templateCache) {
 				$log.debug('hmLessText changed');
 				setToggleLessText();
 				setCurrentToggleText();
+			}
+		});
+
+		$scope.$watch('vm.hmDotsClass', function (newValue, oldValue) {
+			if (newValue != oldValue) {
+				$log.debug('hmDotsClass changed');
+				vm.toggle.dotsClass = vm.hmDotsClass;
+			}
+		});
+
+		$scope.$watch('vm.hmLinkClass', function (newValue, oldValue) {
+			if (newValue != oldValue) {
+				$log.debug('hmLinkClass changed');
+				vm.toggle.linkClass = vm.hmLinkClass;
 			}
 		});
 
