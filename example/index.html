@@ -40,7 +40,7 @@
 	</style>
 </head>
 <body layout="row">
-<md-content layout-padding style="height: 600px;padding: 24px;" ng-app="MyApp">
+<md-content layout-padding style="height: 800px;padding: 24px;" ng-app="MyApp">
 	<div ng-controller="ExampleController">
 		<h1>Angular Read More Directive</h1>
 
@@ -49,7 +49,7 @@
 		<form name="userForm">
 			<md-input-container flex>
 				<label>Text</label>
-				<textarea ng-model="text" columns="1" md-maxlength="300"></textarea>
+				<textarea ng-model="text" columns="1" md-maxlength="700"></textarea>
 			</md-input-container>
 			<md-input-container flex>
 				<label>Limit</label>
@@ -100,9 +100,9 @@
 	/** @ngInject */
 	function Example4Controller($scope) {
 		$scope.text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque gravida vel erat eu vestibulum. Maecenas malesuada, ante at venenatis porta, erat risus porta massa, ac vestibulum libero ex id mauris. Sed faucibus arcu eget lorem vestibulum congue. Phasellus at elit non dolor semper eleifend. Donec nec maximus purus. Donec pretium orci sed ullamcorper scelerisque. Nullam quis elit tristique, interdum eros quis, tincidunt tortor. Fusce odio enim, maximus in sollicitudin vitae, fermentum in elit. Aliquam pretium odio condimentum, fringilla risus in, mollis mi. Phasellus ullamcorper enim vehicula mi commodo laoreet.';
-		$scope.limit = 0;
-		$scope.lessText = "Less";
-		$scope.moreText = "More";
+		$scope.limit = 200;
+		$scope.lessText = "Read less";
+		$scope.moreText = "Read more";
 	}
 </script>
 
