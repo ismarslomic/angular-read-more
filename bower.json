@@ -1,7 +1,30 @@
 {
 	"name": "angular-read-more",
-	"version": "1.0.0",
-	"main": "/src/readmore.js",
+	"description": "AngularJS Read More Directive",
+	"main": "src/readmore.js",
+	"keywords": [
+		"angular",
+		"angularjs",
+		"readmore",
+		"directive"
+	],
+	"authors": [
+		{
+			"name": "Hitesh Modha",
+			"email": "hiteshmodha10@gmail.com"
+		},
+		{
+			"name": "Ismar Slomic",
+			"email": "ismar@slomic.no"
+		}
+	],
+	"ignore": [
+		"**/.*",
+		"node_modules",
+		"coverage",
+		"bower_components",
+		"example"
+	],
 	"dependencies": {
 		"angular": "~1.4.6",
 		"angular-animate": "~1.4.6"
