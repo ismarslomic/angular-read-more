@@ -8,7 +8,10 @@
 
 angular
 	.module('hm.readmore', ['ngAnimate'])
-	.directive('hmReadMore', readMore);
+	.directive('hmReadMore', readMore)
+	.config(function($logProvider){
+		$logProvider.debugEnabled(false);
+	});
 
 /** @ngInject */
 function readMore($templateCache) {
