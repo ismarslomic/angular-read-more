@@ -4,6 +4,8 @@
 [![Dependency Status](https://gemnasium.com/ismarslomic/angular-read-more.svg)](https://gemnasium.com/ismarslomic/angular-read-more)
 > AngularJS directive that limit text and adds read more / read less links to your text when it exeeds certain limit of characters
 
+##Screenshot
+![AngularJS Read More](angular-read-more.png "AngularJS Read More Directive")
 
 ## Install client side
 ```bash
@@ -62,10 +64,6 @@ As attribute
 * `hm-less-text` - link text for read less. Default: Read less
 * `hm-dots-class` - css class for dots
 * `hm-link-class` - css class for links of read more/read less text
-
-
-##Screenshot
-![AngularJS Read More][angular-read-more]
 
 ##License
 angular-read-more is licensed under the MIT license.
