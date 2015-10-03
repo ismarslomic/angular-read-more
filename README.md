@@ -68,3 +68,16 @@ As attribute
 
 ##License
 angular-read-more is licensed under the MIT license.
+
+##Release new Github and Bower version
+```bash
+gulp bump
+gulp build
+git add .
+git commit -m ""
+git push
+```
+Use Github UI to create new tag and release
+```bash
+bower register angular-read-more git://github.com/ismarslomic/angular-read-more.git
+```
