@@ -1,7 +1,6 @@
 {
 	"name": "angular-read-more",
 	"description": "AngularJS Read More Directive",
-	"version": "1.0.0",
 	"main": "dist/readmore.min.js",
 	"keywords": [
 		"angular",
