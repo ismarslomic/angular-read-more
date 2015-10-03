@@ -1,6 +1,6 @@
 {
 	"name": "angular-read-more",
-	"version": "1.0.0",
+	"version": "1.0.2",
 	"description": "Simple AngularJS Read More Directive",
 	"main": "./src/readmore.js",
 	"repository": {
@@ -50,5 +50,8 @@
 		"karma-ng-html2js-preprocessor": "^0.1.2",
 		"karma-phantomjs-launcher": "^0.2.1",
 		"phantomjs": "^1.9.18"
+	},
+	"dependencies": {
+		"gulp-bump": "^1.0.0"
 	}
 }

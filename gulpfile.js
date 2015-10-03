@@ -11,7 +11,8 @@ var gulp = require('gulp'),
 	ngAnnotate = require('gulp-ng-annotate'),
 	browserSync = require('browser-sync'),
 	coveralls = require('gulp-coveralls'),
-	shell = require('gulp-shell');
+	shell = require('gulp-shell'),
+	bump = require('gulp-bump');
 
 
 // Use the gulp-angular-templatecache in order to create JS file of HTML templates to
@@ -80,4 +81,11 @@ gulp.task('browser-sync', function () {
 
 gulp.task('watch', ['build', 'browser-sync'], function () {
 	gulp.watch('src/**/*.*', ['build']);
+});
+
+// Update bower, component, npm at once:
+gulp.task('bump', function(){
+	gulp.src(['./bower.json', './package.json'])
+		.pipe(bump())
+		.pipe(gulp.dest('./'));
 });
