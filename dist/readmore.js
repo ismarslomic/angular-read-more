@@ -7,7 +7,7 @@
 'use strict';
 
 angular
-	.module('hm.readmore', ['ngAnimate'])
+	.module('hm.readmore', ['ngAnimate', 'ngSanitize'])
 	.directive('hmReadMore', readMore)
 	.config(function ($logProvider) {
 		$logProvider.debugEnabled(false);
@@ -152,4 +152,4 @@ function readMore($templateCache) {
 	}
 };
 
-angular.module("hm.readmore").run(["$templateCache", function($templateCache) {$templateCache.put("readmore.template.html","<span name=\"text\">\n	<pre>{{ vm.lessText }}</pre><pre ng-show=\"vm.showMoreText\" class=\"more-show-hide\">{{ vm.moreText }}</pre>\n</span>\n\n<span name=\"toggle\" ng-show=\"vm.toggle.show\">\n	<span ng-class=\"vm.toggle.dotsClass\" ng-show=\"!vm.toggle.state\">{{ vm.toggle.dots }}</span>\n	<a ng-class=\"vm.toggle.linkClass\" ng-click=\"vm.doToggle()\">{{ vm.toggle.text }}</a>\n</span>\n");}]);
+angular.module("hm.readmore").run(["$templateCache", function($templateCache) {$templateCache.put("readmore.template.html","<span name=\"text\">\n	<pre ng-bind-html=\"vm.lessText\"></pre><pre ng-show=\"vm.showMoreText\" class=\"more-show-hide\" ng-bind-html=\"vm.moreText\"></pre>\n</span>\n\n<span name=\"toggle\" ng-show=\"vm.toggle.show\">\n	<span ng-class=\"vm.toggle.dotsClass\" ng-show=\"!vm.toggle.state\">{{ vm.toggle.dots }}</span>\n	<a ng-class=\"vm.toggle.linkClass\" ng-click=\"vm.doToggle()\">{{ vm.toggle.text }}</a>\n</span>\n");}]);

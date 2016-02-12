@@ -1,45 +1,46 @@
 {
-	"name": "angular-read-more",
-	"description": "AngularJS Read More Directive",
-	"version": "1.0.4",
-	"main": "dist/readmore.min.js",
-	"keywords": [
-		"angular",
-		"angularjs",
-		"readmore",
-		"directive"
-	],
-	"authors": [
-		{
-			"name": "Hitesh Modha",
-			"email": "hiteshmodha10@gmail.com"
-		},
-		{
-			"name": "Ismar Slomic",
-			"email": "ismar@slomic.no"
-		}
-	],
-	"ignore": [
-		"bower_components",
-		"coverage",
-		"example",
-		"node_modules",
-		"src",
-		".editorconfig",
-		".gitignore",
-		".npmignore",
-		".travis.yml",
-		"angular-read-more.png",
-		"gulpfile.js",
-		"karma.conf.js",
-		"package.json"
-	],
-	"dependencies": {
-		"angular": "~1.4.6",
-		"angular-animate": "~1.4.6"
-	},
-	"devDependencies": {
-		"angular-mocks": "~1.4.6",
-		"angular-read-more": "~1.0.1"
-	}
+  "name": "angular-read-more",
+  "description": "AngularJS Read More Directive",
+  "version": "1.0.4",
+  "main": "dist/readmore.min.js",
+  "keywords": [
+    "angular",
+    "angularjs",
+    "readmore",
+    "directive"
+  ],
+  "authors": [
+    {
+      "name": "Hitesh Modha",
+      "email": "hiteshmodha10@gmail.com"
+    },
+    {
+      "name": "Ismar Slomic",
+      "email": "ismar@slomic.no"
+    }
+  ],
+  "ignore": [
+    "bower_components",
+    "coverage",
+    "example",
+    "node_modules",
+    "src",
+    ".editorconfig",
+    ".gitignore",
+    ".npmignore",
+    ".travis.yml",
+    "angular-read-more.png",
+    "gulpfile.js",
+    "karma.conf.js",
+    "package.json"
+  ],
+  "dependencies": {
+    "angular": "~1.5.0",
+    "angular-animate": "~1.5.0",
+    "angular-sanitize": "~1.5.0"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.5.0",
+    "angular-read-more": "~1.0.3"
+  }
 }

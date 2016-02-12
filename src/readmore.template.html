@@ -1,5 +1,5 @@
 <span name="text">
-	<pre>{{ vm.lessText }}</pre><pre ng-show="vm.showMoreText" class="more-show-hide">{{ vm.moreText }}</pre>
+	<pre ng-bind-html="vm.lessText"></pre><pre ng-show="vm.showMoreText" class="more-show-hide" ng-bind-html="vm.moreText"></pre>
 </span>
 
 <span name="toggle" ng-show="vm.toggle.show">
