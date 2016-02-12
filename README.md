@@ -13,6 +13,8 @@
 $ bower install angular-read-more --save-dev 
 ```
 
+Note that [angular-sanitize](https://docs.angularjs.org/api/ngSanitize/service/$sanitize) is required since this directive is allowing HTML tags to be used in text.
+
 ## Run example locally
 ```bash
 $ git clone
@@ -32,6 +34,7 @@ $ gulp karma
 ## How to use in HTML
 Include JS script
 ```html
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.5.0/angular-sanitize.min.js"></script>
 <script src="/bower_components/angular-read-more/readmore.min.js"></script>
 ```
 
