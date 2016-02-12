@@ -75,8 +75,9 @@ gulp.task('browser-sync', function () {
 					'/bower_components': 'bower_components',
 					'/dist': 'dist'
 				}
-			}
-		});
+			},
+        	port: 8080
+	});
 });
 
 gulp.task('watch', ['build', 'browser-sync'], function () {
