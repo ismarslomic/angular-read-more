@@ -38,6 +38,11 @@ Include JS script
 <script src="/bower_components/angular-read-more/readmore.min.js"></script>
 ```
 
+Add the module to your app,
+```html
+angular.module("app", ["hm.readmore"]);
+```
+
 As element
 ```html
 <hm-read-more
