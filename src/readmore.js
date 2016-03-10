@@ -117,7 +117,7 @@ function readMore($templateCache) {
 		function setLessAndMoreText() {
 			$log.debug('setLessAndMoreText');
 			vm.lessText = $filter('limitTo')(vm.hmText, vm.hmLimit);
-			vm.moreText = $filter('limitTo')(vm.hmText, getMoreTextLimit());
+			vm.moreText = $filter('limitTo')(vm.hmText);
 		}
 
 		function initialize() {
