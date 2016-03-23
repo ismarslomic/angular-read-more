@@ -1,9 +1,3 @@
-/*
- * angular-read-more v1.0.0
- * (c) 2014-2015 Hitesh Modha
- * License: MIT
- */
-
 'use strict';
 
 angular
@@ -117,7 +111,7 @@ function readMore($templateCache) {
 		function setLessAndMoreText() {
 			$log.debug('setLessAndMoreText');
 			vm.lessText = $filter('limitTo')(vm.hmText, vm.hmLimit);
-			vm.moreText = $filter('limitTo')(vm.hmText, getMoreTextLimit());
+			vm.moreText = $filter('limitTo')(vm.hmText, getMoreTextLimit());	
 		}
 
 		function initialize() {

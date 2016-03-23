@@ -1,9 +1,3 @@
-/*
- * angular-read-more v1.0.0
- * (c) 2014-2015 Hitesh Modha
- * License: MIT
- */
-
 'use strict';
 
 readMore.$inject = ["$templateCache"];
@@ -119,7 +113,7 @@ function readMore($templateCache) {
 		function setLessAndMoreText() {
 			$log.debug('setLessAndMoreText');
 			vm.lessText = $filter('limitTo')(vm.hmText, vm.hmLimit);
-			vm.moreText = $filter('limitTo')(vm.hmText, getMoreTextLimit());
+			vm.moreText = $filter('limitTo')(vm.hmText, getMoreTextLimit());	
 		}
 
 		function initialize() {
@@ -154,4 +148,4 @@ function readMore($templateCache) {
 	}
 };
 
-angular.module("hm.readmore").run(["$templateCache", function($templateCache) {$templateCache.put("readmore.template.html","<span name=\"text\">\n	<pre ng-bind-html=\"vm.lessText\"></pre><pre ng-show=\"vm.showMoreText\" class=\"more-show-hide\" ng-bind-html=\"vm.moreText\"></pre>\n</span>\n\n<span name=\"toggle\" ng-show=\"vm.toggle.show\">\n	<span ng-class=\"vm.toggle.dotsClass\" ng-show=\"!vm.toggle.state\">{{ vm.toggle.dots }}</span>\n	<a ng-class=\"vm.toggle.linkClass\" ng-click=\"vm.doToggle()\">{{ vm.toggle.text }}</a>\n</span>\n");}]);
+angular.module("hm.readmore").run(["$templateCache", function($templateCache) {$templateCache.put("readmore.template.html","<span name=\"text\">\n	<span ng-bind-html=\"vm.lessText\" style=\"white-space:pre-wrap;\"></span>\n	<span ng-show=\"vm.showMoreText\" class=\"more-show-hide\" ng-bind-html=\"vm.moreText\" style=\"white-space:pre-wrap;\"></span>\n</span>\n\n<span name=\"toggle\" ng-show=\"vm.toggle.show\">\n	<span ng-class=\"vm.toggle.dotsClass\" ng-show=\"!vm.toggle.state\">{{ vm.toggle.dots }}</span>\n	<a ng-class=\"vm.toggle.linkClass\" ng-click=\"vm.doToggle()\">{{ vm.toggle.text }}</a>\n</span>\n");}]);
