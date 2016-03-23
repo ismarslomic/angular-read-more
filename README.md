@@ -86,6 +86,8 @@ git commit -m ""
 git push
 ```
 Use Github UI to create new tag and release
+
+## Register bower package for the first time
 ```bash
 bower register angular-read-more git://github.com/ismarslomic/angular-read-more.git
 ```
