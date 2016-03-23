@@ -30,6 +30,7 @@ gulp.task('templates', function () {
 gulp.task('concat', ['templates'], function () {
 	return gulp.src(['./src/readmore.js', 'templates.tmp'])
 		.pipe(concat('readmore.js'))
+		.pipe(ngAnnotate())
 		.pipe(gulp.dest('./dist/'));
 });
 
@@ -38,10 +39,8 @@ gulp.task('clean', ['concat'], function () {
 		.pipe(clean());
 });
 
-// Need to do ngAnnotate before uglify in order to keep the angular dependency injections after compress
 gulp.task('compress', ['concat'], function () {
 	return gulp.src('dist/readmore.js')
-		.pipe(ngAnnotate())
 		.pipe(uglify())
 		.pipe(rename({
 			extname: '.min.js'
