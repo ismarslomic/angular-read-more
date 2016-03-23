@@ -6,15 +6,17 @@
 
 'use strict';
 
+readMore.$inject = ["$templateCache"];
 angular
 	.module('hm.readmore', ['ngAnimate', 'ngSanitize'])
 	.directive('hmReadMore', readMore)
-	.config(function ($logProvider) {
+	.config(["$logProvider", function ($logProvider) {
 		$logProvider.debugEnabled(false);
-	});
+	}]);
 
 /** @ngInject */
 function readMore($templateCache) {
+	hmReadMoreController.$inject = ["$filter", "$scope", "$log"];
 	var directive = {
 		restrict: 'AE',
 		scope: {
