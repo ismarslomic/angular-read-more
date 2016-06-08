@@ -53,6 +53,7 @@
     "phantomjs-prebuilt": "^2.1.6"
   },
   "dependencies": {
-    "gulp-bump": "^2.0.1"
+    "gulp-bump": "^2.0.1",
+    "gulp-frep": "^0.1.3"
   }
 }

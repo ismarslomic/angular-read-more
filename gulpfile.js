@@ -12,8 +12,15 @@ var gulp = require('gulp'),
 	browserSync = require('browser-sync'),
 	coveralls = require('gulp-coveralls'),
 	shell = require('gulp-shell'),
-	bump = require('gulp-bump');
-
+	bump = require('gulp-bump'),
+	frep = require('gulp-frep');
+	
+var nextLinePattern = [
+   {
+      pattern: /\\r\\n/g,
+      replacement: '\\n'
+    }
+];
 
 // Use the gulp-angular-templatecache in order to create JS file of HTML templates to
 // make it easier to use in AngularJS directive
@@ -24,6 +31,7 @@ gulp.task('templates', function () {
 				module: 'hm.readmore'
 			}
 		))
+		.pipe(frep(nextLinePattern))
 		.pipe(gulp.dest('.'));
 });
 
