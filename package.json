@@ -1,6 +1,6 @@
 {
   "name": "angular-read-more",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Simple AngularJS Read More Directive",
   "main": "./index.js",
   "repository": {
@@ -53,6 +53,7 @@
     "phantomjs-prebuilt": "^2.1.6"
   },
   "dependencies": {
-    "gulp-bump": "^2.0.1"
+    "gulp-bump": "^2.0.1",
+    "gulp-frep": "^0.1.3"
   }
 }
