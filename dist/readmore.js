@@ -32,6 +32,7 @@ function readMore($templateCache) {
 	/** @ngInject */
 	// "bindToController: true" binds scope variables to Controller
 	function hmReadMoreController($filter, $scope, $log) {
+		var limit = 0;
 		var vm = this;
 		vm.toggle = {
 			dots: '...',
@@ -57,7 +58,7 @@ function readMore($templateCache) {
 
 		function setShowToggle() {
 			$log.debug('setShowToggle');
-			vm.toggle.show = vm.moreText && vm.moreText.length > 0;
+			vm.toggle.show = limit <= 0;
 		}
 
 		vm.doToggle = function () {
@@ -103,6 +104,7 @@ function readMore($templateCache) {
 		function validateLimit() {
 			$log.debug('validateLimit');
 			vm.hmLimit = (vm.hmLimit && vm.hmLimit <= 0) ? undefined : vm.hmLimit;
+			limit = vm.hmLimit;
 		}
 
 		function getMoreTextLimit() {
@@ -112,8 +114,21 @@ function readMore($templateCache) {
 
 		function setLessAndMoreText() {
 			$log.debug('setLessAndMoreText');
-			vm.lessText = $filter('limitTo')(vm.hmText, vm.hmLimit);
-			vm.moreText = $filter('limitTo')(vm.hmText, getMoreTextLimit());	
+
+		  var htmlParser = new DOMParser()
+		  var xhtml = htmlParser.parseFromString(vm.hmText,"text/html");
+			xhtml = xhtml.querySelector("body")
+			var myDom = cloneNode(xhtml);
+
+			walk(xhtml, myDom, function (node) {
+		    if (node.nodeType === 3) { 
+		        var text = node.data.trim();
+						return text.length;
+		    }
+		    return 0;
+			})
+			vm.lessText = myDom.innerHTML;
+			vm.moreText = vm.hmText;
 		}
 
 		function initialize() {
@@ -124,6 +139,30 @@ function readMore($templateCache) {
 			setLessAndMoreText();
 			setShowToggle();
 			setCurrentToggleText();
+		}
+
+		function cloneNode(node){
+			if (node.nodeType === 3) return	document.createTextNode(node.data);
+			else return node.cloneNode()
+		}
+
+		function walk(node, myNode, callback) {
+			node = node.firstChild;
+		 	while (node != null) {
+				myNode.appendChild(cloneNode(node))
+				if ((limit = limit - callback(node)) <= 0){
+		    		myNode.innerText = myNode.innerText.slice(0, limit)
+		    		return false;
+		    } 
+		    else{
+			  	if (walk(node, myNode.lastElementChild, callback) === false) {
+		    		return false;
+		    	}
+			
+		    }
+				node = node.nextSibling;
+			}
+			return true
 		}
 
 		initialize();
@@ -148,4 +187,6 @@ function readMore($templateCache) {
 	}
 };
 
-angular.module("hm.readmore").run(["$templateCache", function($templateCache) {$templateCache.put("readmore.template.html","<span name=\"text\">\n	<span ng-bind-html=\"vm.lessText\" style=\"white-space:pre-wrap;\"></span>\n	<span ng-show=\"vm.showMoreText\" class=\"more-show-hide\" ng-bind-html=\"vm.moreText\" style=\"white-space:pre-wrap;\"></span>\n</span>\n\n<span name=\"toggle\" ng-show=\"vm.toggle.show\">\n	<span ng-class=\"vm.toggle.dotsClass\" ng-show=\"!vm.toggle.state\">{{ vm.toggle.dots }}</span>\n	<a ng-class=\"vm.toggle.linkClass\" ng-click=\"vm.doToggle()\">{{ vm.toggle.text }}</a>\n</span>\n");}]);
+angular.module("hm.readmore").run(["$templateCache", function($templateCache) 
+	{$templateCache.put("readmore.template.html",
+		"<span name=\"text\">\n	<span ng-bind-html=\"vm.lessText\" ng-if=\"!vm.showMoreText\" style=\"white-space:pre-wrap;\"></span>\n	<span ng-show=\"vm.showMoreText\" class=\"more-show-hide\" ng-bind-html=\"vm.moreText\" style=\"white-space:pre-wrap;\"></span>\n</span>\n\n<span name=\"toggle\" ng-show=\"vm.toggle.show\">\n	<span ng-class=\"vm.toggle.dotsClass\" ng-show=\"!vm.toggle.state\">{{ vm.toggle.dots }}</span>\n	<a ng-class=\"vm.toggle.linkClass\" ng-click=\"vm.doToggle()\">{{ vm.toggle.text }}</a>\n</span>\n");}]);
