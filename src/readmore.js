@@ -17,7 +17,8 @@ function readMore($templateCache) {
 			hmMoreText: '@',
 			hmLessText: '@',
 			hmDotsClass: '@',
-			hmLinkClass: '@'
+			hmLinkClass: '@',
+			hmOnClickCallback: '&'
 		},
 		template: $templateCache.get('readmore.template.html'),
 		controller: hmReadMoreController,
@@ -34,7 +35,8 @@ function readMore($templateCache) {
 		vm.toggle = {
 			dots: '...',
 			dotsClass: vm.hmDotsClass,
-			linkClass: vm.hmLinkClass
+			linkClass: vm.hmLinkClass,
+			onClickCallback: vm.hmOnClickCallback
 		}
 
 		// Toggle functions
@@ -58,11 +60,22 @@ function readMore($templateCache) {
 			vm.toggle.show = vm.moreText && vm.moreText.length > 0;
 		}
 
-		vm.doToggle = function () {
+		function doToggle() {
 			$log.debug('doToggle');
 			vm.toggle.state = !vm.toggle.state;
 			vm.showMoreText = !vm.showMoreText;
 			setCurrentToggleText();
+		}
+
+		function callOnClickCb() {
+			$log.debug('callOnClickCb');
+			vm.hmOnClickCallback();
+		}
+
+		vm.onClick = function () {
+			$log.debug('onClick');
+			doToggle();
+			callOnClickCb();
 		}
 
 		$scope.$watch('vm.hmMoreText', function (newValue, oldValue) {
@@ -111,7 +124,7 @@ function readMore($templateCache) {
 		function setLessAndMoreText() {
 			$log.debug('setLessAndMoreText');
 			vm.lessText = $filter('limitTo')(vm.hmText, vm.hmLimit);
-			vm.moreText = $filter('limitTo')(vm.hmText, getMoreTextLimit());	
+			vm.moreText = $filter('limitTo')(vm.hmText, getMoreTextLimit());
 		}
 
 		function initialize() {
