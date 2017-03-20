@@ -123,8 +123,8 @@ function readMore($templateCache) {
 			setShowToggle();
 			setCurrentToggleText();
 		}
-
-		initialize();
+		
+		vm.$onInit = initialize;
 
 		$scope.$watch('vm.hmText', function (newValue, oldValue) {
 			if (newValue != oldValue) {
