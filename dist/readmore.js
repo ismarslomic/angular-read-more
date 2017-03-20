@@ -33,11 +33,6 @@ function readMore($templateCache) {
 	// "bindToController: true" binds scope variables to Controller
 	function hmReadMoreController($filter, $scope, $log) {
 		var vm = this;
-		vm.toggle = {
-			dots: '...',
-			dotsClass: vm.hmDotsClass,
-			linkClass: vm.hmLinkClass
-		}
 
 		// Toggle functions
 		function setToggleMoreText() {
@@ -115,9 +110,18 @@ function readMore($templateCache) {
 			vm.lessText = $filter('limitTo')(vm.hmText, vm.hmLimit);
 			vm.moreText = $filter('limitTo')(vm.hmText, getMoreTextLimit());	
 		}
+		
+		function initToggle() {
+			vm.toggle = {
+				dots: '...',
+				dotsClass: vm.hmDotsClass,
+				linkClass: vm.hmLinkClass
+			};
+		}
 
 		function initialize() {
 			$log.debug('initialize');
+			initToggle();			
 			setToggleMoreText();
 			setToggleLessText();
 			validateLimit();
