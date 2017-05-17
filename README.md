@@ -74,10 +74,10 @@ As attribute
 * `hm-dots-class` - css class for dots
 * `hm-link-class` - css class for links of read more/read less text
 
-##License
+## License
 angular-read-more is licensed under the MIT license.
 
-##Release new Github and Bower version
+## Release new Github and Bower version
 ```bash
 gulp bump
 gulp build

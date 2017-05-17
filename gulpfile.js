@@ -12,7 +12,23 @@ var gulp = require('gulp'),
 	browserSync = require('browser-sync'),
 	coveralls = require('gulp-coveralls'),
 	shell = require('gulp-shell'),
-	bump = require('gulp-bump');
+	bump = require('gulp-bump'),
+	frep = require('gulp-frep');
+
+var nextLinePattern = [
+	{
+		pattern: /\\r\\n/g,
+		replacement: '\\n'
+	},
+	{
+		pattern: /\\n/g,
+		replacement: ''
+	},
+	{
+		pattern: /\\t/g,
+		replacement: ''
+	}
+];
 
 
 // Use the gulp-angular-templatecache in order to create JS file of HTML templates to
@@ -24,6 +40,7 @@ gulp.task('templates', function () {
 				module: 'hm.readmore'
 			}
 		))
+		.pipe(frep(nextLinePattern))
 		.pipe(gulp.dest('.'));
 });
 
@@ -75,8 +92,8 @@ gulp.task('browser-sync', function () {
 					'/dist': 'dist'
 				}
 			},
-        	port: 8080
-	});
+			port: 8080
+		});
 });
 
 gulp.task('watch', ['build', 'browser-sync'], function () {
@@ -84,7 +101,7 @@ gulp.task('watch', ['build', 'browser-sync'], function () {
 });
 
 // Update bower, component, npm at once:
-gulp.task('bump', function(){
+gulp.task('bump', function () {
 	gulp.src(['./bower.json', './package.json'])
 		.pipe(bump())
 		.pipe(gulp.dest('./'));
