@@ -4,7 +4,7 @@
 [![Dependency Status](https://gemnasium.com/ismarslomic/angular-read-more.svg)](https://gemnasium.com/ismarslomic/angular-read-more)
 > AngularJS directive that limit text and adds read more / read less links to your text when it exeeds certain limit of characters. No requirements to JQuery. Angular animations are used for fade in/out.
 
-##Codepen demo
+## Codepen demo
 [Codepen demo](http://codepen.io/ismarslomic/pen/yYMvrz "Codepen.io: AngularJS Read More Directive")
 ![AngularJS Read More](angular-read-more.png "AngularJS Read More Directive")
 
