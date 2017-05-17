@@ -4,7 +4,7 @@ angular
 	.module('hm.readmore', ['ngAnimate', 'ngSanitize'])
 	.directive('hmReadMore', readMore)
 	.config(function ($logProvider) {
-		$logProvider.debugEnabled(false);
+		$logProvider.debugEnabled(true);
 	});
 
 /** @ngInject */
@@ -37,6 +37,18 @@ function readMore($templateCache) {
 			linkClass: vm.hmLinkClass
 		}
 
+		vm.$onInit = function(){
+			$log.debug('initialize');
+			setToggleMoreText();
+			setToggleLessText();
+			validateLimit();
+			setLessAndMoreText();
+			setShowToggle();
+			setCurrentToggleText();
+			setLinkClass();
+			setDotsClass();
+		}
+
 		// Toggle functions
 		function setToggleMoreText() {
 			$log.debug('setToggleMoreText');
@@ -56,6 +68,16 @@ function readMore($templateCache) {
 		function setShowToggle() {
 			$log.debug('setShowToggle');
 			vm.toggle.show = vm.moreText && vm.moreText.length > 0;
+		}
+
+		function setLinkClass(){
+			$log.debug('setLinkClass');
+			vm.toggle.linkClass = vm.hmLinkClass;
+		}
+
+		function setDotsClass(){
+			$log.debug('setDotsClass');
+			vm.toggle.dotsClass = vm.hmDotsClass;
 		}
 
 		vm.doToggle = function () {
@@ -84,14 +106,14 @@ function readMore($templateCache) {
 		$scope.$watch('vm.hmDotsClass', function (newValue, oldValue) {
 			if (newValue != oldValue) {
 				$log.debug('hmDotsClass changed');
-				vm.toggle.dotsClass = vm.hmDotsClass;
+				setDotsClass();
 			}
 		});
 
 		$scope.$watch('vm.hmLinkClass', function (newValue, oldValue) {
 			if (newValue != oldValue) {
 				$log.debug('hmLinkClass changed');
-				vm.toggle.linkClass = vm.hmLinkClass;
+				setLinkClass();
 			}
 		});
 
@@ -111,20 +133,8 @@ function readMore($templateCache) {
 		function setLessAndMoreText() {
 			$log.debug('setLessAndMoreText');
 			vm.lessText = $filter('limitTo')(vm.hmText, vm.hmLimit);
-			vm.moreText = $filter('limitTo')(vm.hmText, getMoreTextLimit());	
+			vm.moreText = $filter('limitTo')(vm.hmText, getMoreTextLimit());
 		}
-
-		function initialize() {
-			$log.debug('initialize');
-			setToggleMoreText();
-			setToggleLessText();
-			validateLimit();
-			setLessAndMoreText();
-			setShowToggle();
-			setCurrentToggleText();
-		}
-
-		initialize();
 
 		$scope.$watch('vm.hmText', function (newValue, oldValue) {
 			if (newValue != oldValue) {

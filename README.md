@@ -34,7 +34,7 @@ $ gulp karma
 ## How to use in HTML
 Include JS script
 ```html
-<script src="//cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.5.0/angular-sanitize.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.6.4/angular-sanitize.min.js"></script>
 <script src="/bower_components/angular-read-more/readmore.min.js"></script>
 ```
 
