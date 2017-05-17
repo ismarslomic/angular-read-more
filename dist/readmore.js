@@ -5,7 +5,7 @@ angular
 	.module('hm.readmore', ['ngAnimate', 'ngSanitize'])
 	.directive('hmReadMore', readMore)
 	.config(["$logProvider", function ($logProvider) {
-		$logProvider.debugEnabled(true);
+		$logProvider.debugEnabled(false);
 	}]);
 
 /** @ngInject */
