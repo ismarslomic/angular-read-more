@@ -80,7 +80,11 @@ function readMore($templateCache) {
 			vm.toggle.dotsClass = vm.hmDotsClass;
 		}
 
-		vm.doToggle = function () {
+		vm.doToggle = function (event) {
+			if (event) {
+                event.preventDefault()
+                event.stopPropagation()
+            }
 			$log.debug('doToggle');
 			vm.toggle.state = !vm.toggle.state;
 			vm.showMoreText = !vm.showMoreText;

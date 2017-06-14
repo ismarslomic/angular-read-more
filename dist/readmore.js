@@ -82,7 +82,11 @@ function readMore($templateCache) {
 			vm.toggle.dotsClass = vm.hmDotsClass;
 		}
 
-		vm.doToggle = function () {
+		vm.doToggle = function (event) {
+			if (event) {
+                event.preventDefault()
+                event.stopPropagation()
+            }
 			$log.debug('doToggle');
 			vm.toggle.state = !vm.toggle.state;
 			vm.showMoreText = !vm.showMoreText;
@@ -158,4 +162,4 @@ function readMore($templateCache) {
 	}
 };
 
-angular.module('hm.readmore').run(['$templateCache', function($templateCache) {$templateCache.put('readmore.template.html','<span name="text"><span ng-bind-html="vm.lessText" style="white-space:pre-wrap;"></span><span ng-show="vm.showMoreText" class="more-show-hide" ng-bind-html="vm.moreText" style="white-space:pre-wrap;"></span></span><span name="toggle" ng-show="vm.toggle.show"><span ng-class="vm.toggle.dotsClass" ng-show="!vm.toggle.state">{{ vm.toggle.dots }}</span><a ng-class="vm.toggle.linkClass" ng-click="vm.doToggle()">{{ vm.toggle.text }}</a></span>');}]);
+angular.module('hm.readmore').run(['$templateCache', function($templateCache) {$templateCache.put('readmore.template.html','<span name="text"><span ng-bind-html="vm.lessText" style="white-space:pre-wrap;"></span><span ng-show="vm.showMoreText" class="more-show-hide" ng-bind-html="vm.moreText" style="white-space:pre-wrap;"></span></span><span name="toggle" ng-show="vm.toggle.show"><span ng-class="vm.toggle.dotsClass" ng-show="!vm.toggle.state">{{ vm.toggle.dots }}</span><a ng-class="vm.toggle.linkClass" ng-click="vm.doToggle($event)">{{ vm.toggle.text }}</a></span>');}]);
