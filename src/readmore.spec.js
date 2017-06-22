@@ -213,8 +213,8 @@ describe('hmReadMoreController', function () {
 
 		controller.doToggle();
 
-		expect(controller.lessText).toEqual(text50);
-		expect(controller.moreText).toEqual('dreams, he found himself transformed in his bed in');
+		expect(controller.lessText).toEqual('');
+        expect(controller.moreText).toEqual(text100)
 		expect(controller.toggle.state).toBeTruthy();
 		expect(controller.showMoreText).toBeTruthy();
 		expect(controller.toggle.text).toEqual('Read less');
@@ -225,10 +225,11 @@ describe('hmReadMoreController', function () {
 		element = compile('<hm-read-more hm-text="' + text100 + '" hm-limit="50" hm-less-text="Read less" hm-more-text="Read more"></hm-read-more>')(scope);
 		scope.$digest();
 		controller = element.controller('hmReadMore');
+
 		controller.doToggle();
 
-		expect(controller.lessText).toEqual(text50);
-		expect(controller.moreText).toEqual('dreams, he found himself transformed in his bed in');
+		expect(controller.lessText).toEqual('');
+        expect(controller.moreText).toEqual(text100)
 		expect(controller.toggle.state).toBeTruthy();
 		expect(controller.showMoreText).toBeTruthy();
 		expect(controller.toggle.text).toEqual('Read less');
