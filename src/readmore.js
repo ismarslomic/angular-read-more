@@ -84,7 +84,15 @@ function readMore($templateCache) {
 
 		function setHtmlMode(){
 			$log.debug('setHtmlMode');
-			vm.htmlAllowed = typeof vm.hmHtml == 'undefined' ? true : false;
+
+			var hmHtml = typeof vm.hmHtml == 'undefined' ? true : vm.hmHtml;
+
+			if (typeof hmHtml == 'string') {
+				hmHtml = hmHtml.toLowerCase();
+				hmHtml = hmHtml == 'true' || hmHtml == 'on';
+			}
+
+			vm.htmlAllowed = hmHtml;
 		}
 
 		vm.doToggle = function () {

@@ -238,7 +238,7 @@ describe('hmReadMoreController', function () {
 		element = compile('<hm-read-more hm-text="' + text50 + '"></hm-read-more>')(scope);
 		scope.$digest();
 		controller = element.controller('hmReadMore');
-		expect(controller.htmlAllowed).toBeTruthy();
+		expect(controller.htmlAllowed).toEqual(true);
 
 		var spans = element.find('span').find('span');
 		expect(spans[0].attributes[1].name).toEqual('ng-bind-html');
@@ -249,7 +249,7 @@ describe('hmReadMoreController', function () {
 		element = compile('<hm-read-more hm-text="' + text50 + '" hm-html="false"></hm-read-more>')(scope);
 		scope.$digest();
 		controller = element.controller('hmReadMore');
-		expect(controller.htmlAllowed).toBeFalsy();
+		expect(controller.htmlAllowed).toEqual(false);
 
 		var spans = element.find('span').find('span');
 		expect(spans[0].attributes[1].name).toEqual('ng-bind');
