@@ -19,7 +19,8 @@ function readMore($templateCache) {
 			hmMoreText: '@',
 			hmLessText: '@',
 			hmDotsClass: '@',
-			hmLinkClass: '@'
+			hmLinkClass: '@',
+			hmHtml: '@'
 		},
 		template: $templateCache.get('readmore.template.html'),
 		controller: hmReadMoreController,
@@ -49,6 +50,7 @@ function readMore($templateCache) {
 			setCurrentToggleText();
 			setLinkClass();
 			setDotsClass();
+			setHtmlMode();
 		}
 
 		// Toggle functions
@@ -80,6 +82,11 @@ function readMore($templateCache) {
 		function setDotsClass(){
 			$log.debug('setDotsClass');
 			vm.toggle.dotsClass = vm.hmDotsClass;
+		}
+
+		function setHtmlMode(){
+			$log.debug('setHtmlMode');
+			vm.htmlAllowed = typeof vm.hmHtml == 'undefined' ? true : false;
 		}
 
 		vm.doToggle = function () {
@@ -158,4 +165,4 @@ function readMore($templateCache) {
 	}
 };
 
-angular.module('hm.readmore').run(['$templateCache', function($templateCache) {$templateCache.put('readmore.template.html','<span name="text"><span ng-bind-html="vm.lessText" style="white-space:pre-wrap;"></span><span ng-show="vm.showMoreText" class="more-show-hide" ng-bind-html="vm.moreText" style="white-space:pre-wrap;"></span></span><span name="toggle" ng-show="vm.toggle.show"><span ng-class="vm.toggle.dotsClass" ng-show="!vm.toggle.state">{{ vm.toggle.dots }}</span><a ng-class="vm.toggle.linkClass" ng-click="vm.doToggle()">{{ vm.toggle.text }}</a></span>');}]);
+angular.module('hm.readmore').run(['$templateCache', function($templateCache) {$templateCache.put('readmore.template.html','<span name="text"><span ng-if="!vm.htmlAllowed" ng-bind="vm.lessText" style="white-space:pre-wrap;"></span><span ng-if="!vm.htmlAllowed" ng-show="vm.showMoreText" class="more-show-hide" ng-bind="vm.moreText" style="white-space:pre-wrap;"></span><span ng-if="vm.htmlAllowed" ng-bind-html="vm.lessText" style="white-space:pre-wrap;"></span><span ng-if="vm.htmlAllowed" ng-show="vm.showMoreText" class="more-show-hide" ng-bind-html="vm.moreText" style="white-space:pre-wrap;"></span></span><span name="toggle" ng-show="vm.toggle.show"><span ng-class="vm.toggle.dotsClass" ng-show="!vm.toggle.state">{{ vm.toggle.dots }}</span><a ng-class="vm.toggle.linkClass" ng-click="vm.doToggle()">{{ vm.toggle.text }}</a></span>');}]);
