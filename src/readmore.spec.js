@@ -233,4 +233,26 @@ describe('hmReadMoreController', function () {
 		expect(controller.showMoreText).toBeTruthy();
 		expect(controller.toggle.text).toEqual('Read less');
 	});
+
+	it('should default to bind html', function() {
+		element = compile('<hm-read-more hm-text="' + text50 + '"></hm-read-more>')(scope);
+		scope.$digest();
+		controller = element.controller('hmReadMore');
+		expect(controller.htmlAllowed).toBeTruthy();
+
+		var spans = element.find('span').find('span');
+		expect(spans[0].attributes[1].name).toEqual('ng-bind-html');
+		expect(spans[1].attributes[3].name).toEqual('ng-bind-html');
+	});
+
+	it('should bind instead of bind html when configured to do so', function() {
+		element = compile('<hm-read-more hm-text="' + text50 + '" hm-html="false"></hm-read-more>')(scope);
+		scope.$digest();
+		controller = element.controller('hmReadMore');
+		expect(controller.htmlAllowed).toBeFalsy();
+
+		var spans = element.find('span').find('span');
+		expect(spans[0].attributes[1].name).toEqual('ng-bind');
+		expect(spans[1].attributes[3].name).toEqual('ng-bind');
+	});
 });

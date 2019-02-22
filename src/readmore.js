@@ -17,7 +17,8 @@ function readMore($templateCache) {
 			hmMoreText: '@',
 			hmLessText: '@',
 			hmDotsClass: '@',
-			hmLinkClass: '@'
+			hmLinkClass: '@',
+			hmHtml: '@'
 		},
 		template: $templateCache.get('readmore.template.html'),
 		controller: hmReadMoreController,
@@ -47,6 +48,7 @@ function readMore($templateCache) {
 			setCurrentToggleText();
 			setLinkClass();
 			setDotsClass();
+			setHtmlMode();
 		}
 
 		// Toggle functions
@@ -78,6 +80,11 @@ function readMore($templateCache) {
 		function setDotsClass(){
 			$log.debug('setDotsClass');
 			vm.toggle.dotsClass = vm.hmDotsClass;
+		}
+
+		function setHtmlMode(){
+			$log.debug('setHtmlMode');
+			vm.htmlAllowed = typeof vm.hmHtml == 'undefined' ? true : false;
 		}
 
 		vm.doToggle = function () {

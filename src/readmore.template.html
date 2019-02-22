@@ -1,6 +1,8 @@
 <span name="text">
-	<span ng-bind-html="vm.lessText" style="white-space:pre-wrap;"></span>
-	<span ng-show="vm.showMoreText" class="more-show-hide" ng-bind-html="vm.moreText" style="white-space:pre-wrap;"></span>
+	<span ng-if="!vm.htmlAllowed" ng-bind="vm.lessText" style="white-space:pre-wrap;"></span>
+	<span ng-if="!vm.htmlAllowed" ng-show="vm.showMoreText" class="more-show-hide" ng-bind="vm.moreText" style="white-space:pre-wrap;"></span>
+	<span ng-if="vm.htmlAllowed" ng-bind-html="vm.lessText" style="white-space:pre-wrap;"></span>
+	<span ng-if="vm.htmlAllowed" ng-show="vm.showMoreText" class="more-show-hide" ng-bind-html="vm.moreText" style="white-space:pre-wrap;"></span>
 </span>
 
 <span name="toggle" ng-show="vm.toggle.show">
